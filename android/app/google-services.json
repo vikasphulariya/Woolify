@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "837994059228",
+    "project_id": "sihhustlers-f5cb8",
+    "storage_bucket": "sihhustlers-f5cb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837994059228:android:790c7b41c96f12ff97ab19",
+        "android_client_info": {
+          "package_name": "com.animations"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBW-ldgqY1Aa7G1DNDtJhB8rQ8mDA-7I_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
