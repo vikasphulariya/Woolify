@@ -7,6 +7,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   ScrollViewBase,
+  PermissionsAndroid,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import auth from '@react-native-firebase/auth';
@@ -16,7 +17,18 @@ import Snackbar from 'react-native-snackbar';
 import {TextInput} from 'react-native';
 import Animated, {FadeIn, FadeInDown, FadeInUp} from 'react-native-reanimated';
 
+import messaging from '@react-native-firebase/messaging';
 const Login = ({navigation}) => {
+  async function requestUserPermission() {
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+    if (enabled) {
+      console.log('Authorization status:', authStatus);
+    }
+  }
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
   const [ValidEmail, setValidEmail] = useState('');
@@ -31,6 +43,29 @@ const Login = ({navigation}) => {
       setInitializing(false);
     }
   }
+  async function requestNotificationPermission() {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+        {
+          title: 'Notification Permission',
+          message:
+            'This app needs notification permission to send you updates.',
+          buttonPositive: 'OK',
+          buttonNegative: 'Cancel',
+        },
+      );
+
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('Notification permission granted.');
+      } else {
+        console.log('Notification permission denied.');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  }
+
   useEffect(() => {
     console.log('useEffect running');
     if (auth().currentUser !== null) {
@@ -121,7 +156,10 @@ const Login = ({navigation}) => {
         }
       })
       .catch(err => {
-        if (err.code === 'auth/wrong-password') {
+        if (
+          err.code === 'auth/wrong-password' ||
+          err.code === 'auth/invalid-login'
+        ) {
           Snackbar.show({
             text: 'Wrong password',
             duration: Snackbar.LENGTH_SHORT,
@@ -157,8 +195,20 @@ const Login = ({navigation}) => {
               },
             },
           });
+        } else {
+          Snackbar.show({
+            text: 'Something Went Wrong ',
+            duration: Snackbar.LENGTH_SHORT,
+            action: {
+              text: 'Retry',
+              textColor: 'green',
+              onPress: () => {
+                valditor();
+              },
+            },
+          });
         }
-        console.log(err);
+        console.log(err.code);
       });
   };
   return (
@@ -191,6 +241,11 @@ const Login = ({navigation}) => {
         {/* title */}
         <View className="flex items-center" style={{marginTop: 69}}>
           <Animated.Text
+            onPress={() => {
+              console.log("Ea")
+              // requestUserPermission();
+              requestNotificationPermission()
+            }}
             entering={FadeInUp.duration(1000).springify()}
             className="text-white font-bold tracking-wider text-5xl">
             Login
@@ -204,6 +259,8 @@ const Login = ({navigation}) => {
             <TextInput
               className="text-black text-xl"
               placeholder="Email"
+              inputMode="email"
+              textContentType="emailAddress"
               placeholderTextColor={'gray'}
               value={Email}
               onChangeText={e => {
@@ -218,6 +275,7 @@ const Login = ({navigation}) => {
               className="text-black text-xl"
               placeholder="Password"
               secureTextEntry
+              textContentType="password"
               placeholderTextColor={'gray'}
               value={Password}
               onChangeText={e => {

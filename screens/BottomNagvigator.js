@@ -11,11 +11,16 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Learn from './BottomTabs/Learn';
 import Feather from 'react-native-vector-icons/Feather';
 // import Profile from './HomeLogin.js/Profile';
+import Testing from './BottomTabs/testing';
 import Home from './BottomTabs/Home';
 import {useEffect, useState} from 'react';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 // import messaging from '@react-native-firebase/messaging';
+import Buy from './BottomTabs/Buy';
+import Sell from './BottomTabs/Sell';
+import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 function BottomNavigator() {
@@ -53,16 +58,42 @@ function BottomNavigator() {
 
   return (
     // <NavigationContainer>
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{tabBarLabelStyle: {fontSize: 12}}}
+      initialRouteName="Buy">
       <Tab.Screen
-        name="Home"
+        name="Buy"
+        component={Buy}
+        options={{
+          headerShown: false,
+          tabBarHideOnKeyboard: true,
+          tabBarShowLabel: true,
+          tabBarIcon: ({focused, color, size}) => (
+            <Feather name="bold" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Sell"
+        component={Sell}
+        options={{
+          headerShown: false,
+          tabBarHideOnKeyboard: true,
+          tabBarShowLabel: true,
+          tabBarIcon: ({focused, color, size}) => (
+            <Entypo name="publish" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Orders"
         component={Home}
         options={{
           headerShown: false,
           tabBarHideOnKeyboard: true,
-          tabBarShowLabel: false,
+          tabBarShowLabel: true,
           tabBarIcon: ({focused, color, size}) => (
-            <AntDesign name="home" color={color} size={size} />
+            <AntDesign name="profile" color={color} size={size} />
           ),
         }}
       />
@@ -72,12 +103,13 @@ function BottomNavigator() {
         options={{
           headerShown: false,
           tabBarHideOnKeyboard: true,
-          tabBarShowLabel: false,
+          tabBarShowLabel: true,
           tabBarIcon: ({focused, color, size}) => (
             <AntDesign name="book" color={color} size={size} />
           ),
         }}
       />
+
       {/* <Tab.Screen
         name="Cart"
         component={Cart}

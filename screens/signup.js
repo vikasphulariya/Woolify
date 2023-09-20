@@ -6,7 +6,11 @@ import {
   StatusBar,
   TouchableOpacity,
   ScrollView,
+  Modal,
+  TouchableWithoutFeedback,
+  StyleSheet,
 } from 'react-native';
+
 import React, {useState, useEffect} from 'react';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
@@ -16,13 +20,15 @@ import {TextInput} from 'react-native';
 import Animated, {FadeInDown, FadeInUp} from 'react-native-reanimated';
 
 const SignUp = ({navigation}) => {
+  const [modalVisible, setmodalVisible] = useState(false);
   const [name, setName] = useState('');
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
-  const [Validname, setValidName] = useState('');
-  const [ValidEmail, setValidEmail] = useState('');
-  const [ValidPassword, setValidPassword] = useState('');
-  const [valid, setValid] = useState(false);
+  const [Phone, setPhone] = useState('');
+  const [state, setState] = useState('');
+  const [Pincode, setPincode] = useState('');
+  const [address, setAddress] = useState('');
+  const [Sheeps, setSheeps] = useState('');
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
@@ -40,9 +46,9 @@ const SignUp = ({navigation}) => {
   }, []);
   const valditor = () => {
     let validC = true;
-    setValid(true);
+    // setValid(true);
     if (name.length <= 2) {
-      setValidName('Enter Full Name');
+      // setValidName('Enter Full Name');
       Snackbar.show({
         text: 'Please Enter a Valid Name',
         duration: Snackbar.LENGTH_SHORT,
@@ -56,12 +62,8 @@ const SignUp = ({navigation}) => {
       });
       validC = false;
       return;
-    } else {
-      setValidName('');
     }
-    if (EmailValidator(Email) === true) {
-      setValidEmail('');
-    } else {
+    if (EmailValidator(Email) === false) {
       Snackbar.show({
         text: 'Please Enter Valid Mail',
         duration: Snackbar.LENGTH_SHORT,
@@ -77,7 +79,6 @@ const SignUp = ({navigation}) => {
       return;
     }
     if (Password.length <= 5) {
-      setValidPassword('Password must be at least 6 characters');
       Snackbar.show({
         text: 'Password must be at least 6 characters',
         duration: Snackbar.LENGTH_SHORT,
@@ -90,10 +91,84 @@ const SignUp = ({navigation}) => {
         },
       });
       validC = false;
-    } else {
-      setValidPassword('');
     }
     if (validC) {
+      // createAccount();
+      setmodalVisible(true);
+    }
+  };
+
+  const ValidateInfo = () => {
+    let c = true;
+    if (Phone.length < 10) {
+      Snackbar.show({
+        text: 'Please Enter Valid Phone Number',
+        duration: Snackbar.LENGTH_SHORT,
+        action: {
+          text: 'Ok',
+          textColor: 'green',
+          onPress: () => {
+            // navigation.replace('Login');
+          },
+        },
+      });
+      c = false;
+      // return;
+    } else if (state.length < 3) {
+      Snackbar.show({
+        text: 'Please Enter Valid State Name',
+        duration: Snackbar.LENGTH_SHORT,
+        action: {
+          text: 'Ok',
+          textColor: 'green',
+          onPress: () => {
+            // navigation.replace('Login');
+          },
+        },
+      });
+      c = false;
+    } else if (Pincode.length !== 6) {
+      Snackbar.show({
+        text: 'Please Enter Valid Pincode',
+        duration: Snackbar.LENGTH_SHORT,
+        action: {
+          text: 'Ok',
+          textColor: 'green',
+          onPress: () => {
+            // navigation.replace('Login');
+          },
+        },
+      });
+      c = false;
+    } else if (address.length < 5) {
+      Snackbar.show({
+        text: 'Please Enter Valid Address',
+        duration: Snackbar.LENGTH_SHORT,
+        action: {
+          text: 'Ok',
+          textColor: 'green',
+          onPress: () => {
+            // navigation.replace('Login');
+          },
+        },
+      });
+      c = false;
+    } else if (Sheeps.length === 0) {
+      Snackbar.show({
+        text: 'Please Enter No of Sheeps',
+        duration: Snackbar.LENGTH_SHORT,
+        action: {
+          text: 'Ok',
+          textColor: 'green',
+          onPress: () => {
+            // navigation.replace('Login');
+          },
+        },
+      });
+      c = false;
+    }
+    if (c) {
+      console.log('Everything Working');
       createAccount();
     }
   };
@@ -125,35 +200,43 @@ const SignUp = ({navigation}) => {
             console.log('profile updated');
             // console.log("");
             // setModalVisible(false);
-            Snackbar.show({
-              text: 'Verification Mail Sent',
-              duration: Snackbar.LENGTH_SHORT,
-              action: {
-                text: 'Login',
-                textColor: 'green',
-                onPress: () => {
-                  navigation.replace('Login');
-                },
-              },
-            });
             auth()
               .currentUser.sendEmailVerification()
               .then(() => {
                 console.log('mail sent Succes');
-
-                auth()
-                  .signOut()
+                Snackbar.show({
+                  text: 'Setting User Profile',
+                  duration: Snackbar.LENGTH_SHORT,
+                  action: {
+                    text: 'OK',
+                    textColor: 'green',
+                    onPress: () => {
+                      navigation.replace('login');
+                    },
+                  },
+                });
+                firestore()
+                  .collection('Users')
+                  .doc(auth().currentUser.email)
+                  .set({
+                    Phone: Phone,
+                    State: state,
+                    Pincode: Pincode,
+                    Address: address,
+                    Sheeps: Sheeps,
+                  })
                   .then(() => {
-                    console.log('m');
-                    firestore()
-                      .collection('Users')
-                      .doc(Email)
-                      .set({
-                        cart: [],
-                        wishlist: [],
-                        tokens: [],
-                      })
-                      .then(() => console.log('info added'));
+                    Snackbar.show({
+                      text: 'Verification Mail Sent',
+                      duration: Snackbar.LENGTH_SHORT,
+                      action: {
+                        text: 'Login',
+                        textColor: 'green',
+                        onPress: () => {
+                          navigation.replace('login');
+                        },
+                      },
+                    });
                   });
               });
           });
@@ -162,7 +245,7 @@ const SignUp = ({navigation}) => {
       })
       .catch(error => {
         // console.log(auth().currentUser);
-        setModalVisible(false);
+        // setmodalVisible(false);
         if (error.code === 'auth/email-already-in-use') {
           console.log('That email address is already in use!');
           Snackbar.show({
@@ -264,6 +347,9 @@ const SignUp = ({navigation}) => {
             <TextInput
               className="text-black text-xl"
               placeholder="Email"
+              allowFontScaling
+              inputMode="email"
+              textContentType="emailAddress"
               placeholderTextColor={'gray'}
               onChangeText={e => {
                 setEmail(e);
@@ -271,12 +357,14 @@ const SignUp = ({navigation}) => {
               value={Email}
             />
           </Animated.View>
+
           <Animated.View
             entering={FadeInUp.delay(400).duration(1000).springify()}
             className="bg-black/5 p-1 pl-3 rounded-2xl w-full">
             <TextInput
               className="text-black text-xl"
               placeholder="Password"
+              textContentType="password"
               secureTextEntry
               placeholderTextColor={'gray'}
               onChangeText={e => {
@@ -292,6 +380,7 @@ const SignUp = ({navigation}) => {
             <TouchableOpacity
               onPress={() => {
                 console.log('d');
+                // setmodalVisible(true);
                 valditor();
               }}
               style={{elevation: 3}}
@@ -313,8 +402,163 @@ const SignUp = ({navigation}) => {
           </Animated.View>
         </ScrollView>
       </View>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setmodalVisible(!modalVisible);
+        }}>
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => setmodalVisible(false)}
+          style={styles.centeredView}>
+          <TouchableWithoutFeedback>
+            <View style={styles.modalView}>
+              <View
+                style={{
+                  // flexDirection: 'row',
+                  // justifyContent: 'space-between',
+                  width: '100%',
+                  alignItems: 'center',
+                  // backgroundColor: 'red',
+                  alignContent: 'center',
+                }}>
+                {/* <Text>1</Text> */}
+                <Text
+                  style={{alignSelf: 'center'}}
+                  className="text-black text-2xl font-bold">
+                  Fill additional Information
+                </Text>
+              </View>
+              <Animated.View
+                entering={FadeInUp.duration(1000).springify()}
+                className="bg-black/5 p-1 pl-3  my-2 rounded-2xl w-full">
+                <TextInput
+                  className="text-black text-xl"
+                  placeholder="Phone Number"
+                  // secureTextEntry
+                  keyboardType="numeric"
+                  placeholderTextColor={'gray'}
+                  onChangeText={e => {
+                    setPhone(e);
+                  }}
+                  value={Phone}
+                />
+              </Animated.View>
+              <Animated.View
+                entering={FadeInUp.delay(100).duration(1000).springify()}
+                className="bg-black/5 p-1 pl-3 my-2 rounded-2xl w-full">
+                <TextInput
+                  className="text-black text-xl"
+                  placeholder="State"
+                  // secureTextEntry
+
+                  placeholderTextColor={'gray'}
+                  onChangeText={e => {
+                    setState(e);
+                  }}
+                  value={state}
+                />
+              </Animated.View>
+              <Animated.View
+                entering={FadeInUp.delay(200).duration(1000).springify()}
+                className="bg-black/5 p-1 pl-3 my-2 rounded-2xl w-full">
+                <TextInput
+                  className="text-black text-xl"
+                  placeholder="Pincode"
+                  keyboardType="number-pad"
+                  placeholderTextColor={'gray'}
+                  onChangeText={e => {
+                    setPincode(e);
+                  }}
+                  value={Pincode}
+                />
+              </Animated.View>
+              <Animated.View
+                entering={FadeInUp.delay(300).duration(1000).springify()}
+                className="bg-black/5 p-1 pl-3 my-2 rounded-2xl w-full">
+                <TextInput
+                  className="text-black text-xl"
+                  placeholder="Address"
+                  // keyboardType="number-pad"
+                  placeholderTextColor={'gray'}
+                  onChangeText={e => {
+                    setAddress(e);
+                  }}
+                  value={address}
+                />
+              </Animated.View>
+              <Animated.View
+                entering={FadeInUp.delay(400).duration(1000).springify()}
+                className="bg-black/5 p-1 pl-3 my-2 rounded-2xl w-full">
+                <TextInput
+                  className="text-black text-xl"
+                  placeholder="No of Sheeps"
+                  keyboardType="number-pad"
+                  placeholderTextColor={'gray'}
+                  onChangeText={e => {
+                    setSheeps(e);
+                  }}
+                  value={Sheeps}
+                />
+              </Animated.View>
+              <Animated.View
+                entering={FadeInUp.delay(500).duration(1000).springify()}
+                className="w-full"
+                style={{elevation: 10}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    // console.log('d');
+                    // setmodalVisible(true);
+                    // valditor();
+                    ValidateInfo();
+                  }}
+                  style={{}}
+                  className="bg-sky-400  p-2 w-full rounded-2xl my-3">
+                  <Text className="font-bold text-white text-center text-3xl">
+                    Submit
+                  </Text>
+                </TouchableOpacity>
+              </Animated.View>
+            </View>
+          </TouchableWithoutFeedback>
+        </TouchableOpacity>
+      </Modal>
     </View>
   );
 };
 
+const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // marginTop: 22,
+    // backgroundColor: 'red',
+    // backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 15,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    width: '85%',
+  },
+});
 export default SignUp;

@@ -1,10 +1,10 @@
 import {View, Text, FlatList} from 'react-native';
 import React, {useState, useEffect} from 'react';
-import Header from '../common/Header';
-import BuyTile from '../common/BuyTile';
+import BuyTile from './common/BuyTile';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-const Home = () => {
+import HeaderWb from './common/HeaderWb';
+const ManageYourOders = () => {
   const [sellAds, setSellAds] = useState([]);
   useEffect(() => {
     console.log('Use effect');
@@ -27,13 +27,13 @@ const Home = () => {
   const getItem = async querySnapshot => {
     let temp = [];
     querySnapshot.forEach(documentSnapshot => {
-      if (documentSnapshot.data().BuyerEmail === auth().currentUser.email)
+      if (documentSnapshot.data().email === auth().currentUser.email)
         temp.push({
           id: documentSnapshot.id,
           data: documentSnapshot.data(),
         });
     });
-    console.log('temp', temp);
+    // console.log('temp', temp);
     // temp.sort((a, b) => {
     //   const nameA = a.data.name.toUpperCase();
     //   const nameB = b.data.name.toUpperCase();
@@ -53,8 +53,9 @@ const Home = () => {
     setSellAds(temp);
   };
   return (
-    <View>
-      <Header />
+    <View className="flex-1 my-4">
+      <HeaderWb title={"Manage Your Orders"}/>
+      {/* <Text>ManageYourOders</Text> */}
       <FlatList
         data={sellAds}
         renderItem={({item, index}) => {
@@ -71,4 +72,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default ManageYourOders;
