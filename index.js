@@ -19,7 +19,7 @@ messaging().setBackgroundMessageHandler(async remoteMessage => {
     onDisplayNotification(remoteMessage);
   } else {
     console.log('User Not Valid');
-    onDisplayNotification(remoteMessage);
+    // onDisplayNotification(remoteMessage);
   }
 });
 

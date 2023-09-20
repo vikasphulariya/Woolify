@@ -117,7 +117,7 @@ function App() {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="ManageOder"
+          name="ManageOrder"
           component={ManageOder}
           options={{headerShown: false}}
         />

@@ -4,6 +4,14 @@ import Header from '../common/Header';
 import firestore from '@react-native-firebase/firestore';
 import PriceTile from '../common/PriceTile';
 import {useIsFocused} from '@react-navigation/native';
+import Animated, {
+    FadeIn,
+    FadeInDown,
+    FadeInUp,
+    BounceInUp,
+    BounceInDown,
+    FadeInRight,
+  } from 'react-native-reanimated';
 const Price = () => {
   const focused = useIsFocused();
   const [wareData, setWareData] = useState([]);
@@ -42,16 +50,19 @@ const Price = () => {
       <Text className="text-black self-center text-2xl font-bold">
         State Wise Wool Price's
       </Text>
-      <FlatList
-        data={wareData}
-        renderItem={({item, index}) => {
-          return (
-            <View>
-              <PriceTile data={item} />
-            </View>
-          );
-        }}
-      />
+      {focused ? (
+        <FlatList
+          data={wareData}
+          renderItem={({item, index}) => {
+            return (
+                <Animated.View
+                entering={FadeInRight.delay(index * 50).duration(200)}>
+                <PriceTile data={item} />
+              </Animated.View>
+            );
+          }}
+        />
+      ) : null}
       {/* <PriceTile /> */}
     </View>
   );

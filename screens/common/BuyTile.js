@@ -52,7 +52,7 @@ const BuyTile = ({propsData}) => {
       {auth().currentUser.email === temp.email && temp.Status !== 'Active' ? (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Edit', {
+            navigation.navigate('ManageOrder', {
               Detailed: propsData,
             });
           }}

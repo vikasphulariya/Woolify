@@ -101,7 +101,9 @@ const EditPost = ({route}) => {
       data: {
         body: `${auth().currentUser.displayName} Updated a sell Request`,
         title: 'Sell Updated',
+        // title: 'New sell Added',
         by: auth().currentUser.email,
+        for: 'all',
       },
       // to: 'foBoldX0TR-soxJYTU-J5O:APA91bES9B_Yo-bVWZyBudiAmnudjE-JJNHl35asK_kz_bW1PXHOE6xaneQ1cVIuhEK6Ydn0wLeym2pozL-mXTssdCdURDPIONsFU4wJW21OmN5fR290zWQ0Yra5KevVFgm1RyZ96d9n',
       to: '/topics/Sell',
@@ -122,6 +124,7 @@ const EditPost = ({route}) => {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
+        
       })
       .catch(function (error) {
         console.log(error);

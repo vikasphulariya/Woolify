@@ -2,7 +2,7 @@ import {View, Text} from 'react-native';
 import React from 'react';
 
 const PriceTile = ({data}) => {
-    const k=data.data["Angora "]
+  const k = data.data['Angora '];
   console.log(k[0]);
   return (
     <View className="px-3 my-1">
@@ -19,7 +19,7 @@ const PriceTile = ({data}) => {
               Mongra
             </Text>
             <Text className=" px-2 mt-2 rounded-xl text-black font-bold text-lg">
-            Angora 
+              Angora
             </Text>
           </View>
           <View>
@@ -38,10 +38,10 @@ const PriceTile = ({data}) => {
               Latest
             </Text>
             <Text className=" px-2 mt-2 rounded-xl text-black font-bold text-lg">
-              {data.data["MongraO"][1]}/Kg
+              {data.data.MongraO[1]}/Kg
             </Text>
             <Text className=" px-2 mt-2 rounded-xl text-black font-bold text-lg">
-              {data.data["Angora "][1]}/Kg
+              {data.data['Angora '][1]}/Kg
             </Text>
           </View>
         </View>

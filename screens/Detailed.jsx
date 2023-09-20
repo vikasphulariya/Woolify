@@ -8,7 +8,9 @@ import auth from '@react-native-firebase/auth';
 import messaging from '@react-native-firebase/messaging';
 import axios from 'axios';
 import HeaderWb from './common/HeaderWb';
+import {useNavigation} from '@react-navigation/native';
 const Detailed = ({route}) => {
+  const nab = useNavigation();
   console.log(route.params.Id);
   const temp = route.params.Detailed;
   const sendNotification = () => {
@@ -17,7 +19,7 @@ const Detailed = ({route}) => {
         body: `${auth().currentUser.displayName}  Bought your Wool`,
         title: 'Sell Update',
         by: auth().currentUser.email,
-        to: route.params.Detailed.email,
+        for: route.params.Detailed.email,
       },
       // to: 'foBoldX0TR-soxJYTU-J5O:APA91bES9B_Yo-bVWZyBudiAmnudjE-JJNHl35asK_kz_bW1PXHOE6xaneQ1cVIuhEK6Ydn0wLeym2pozL-mXTssdCdURDPIONsFU4wJW21OmN5fR290zWQ0Yra5KevVFgm1RyZ96d9n',
       to: '/topics/Sell',
@@ -38,6 +40,7 @@ const Detailed = ({route}) => {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
+        nab.goBack();
       })
       .catch(function (error) {
         console.log(error);
@@ -113,6 +116,7 @@ const Detailed = ({route}) => {
               })
               .then(() => {
                 sendNotification();
+                
               });
           }}
           className="bg-[#b68c80] px-3 py-[3]  rounded-full self-center my-6">
