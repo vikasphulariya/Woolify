@@ -11,7 +11,11 @@ import messaging from '@react-native-firebase/messaging';
 
 messaging().setBackgroundMessageHandler(async remoteMessage => {
   console.log(remoteMessage);
-  if (remoteMessage.data.by !== auth().currentUser.email) {
+  if (
+    remoteMessage.data.by !== auth().currentUser.email &&
+    (remoteMessage.data.for === 'all' ||
+      remoteMessage.data.for === auth().currentUser.email)
+  ) {
     onDisplayNotification(remoteMessage);
   } else {
     console.log('User Not Valid');
@@ -25,10 +29,7 @@ notifee.onBackgroundEvent(async ({type, detail}) => {
 
 async function onDisplayNotification(noti) {
   console.log('BacckGround Notification');
-  // Request permissions (required for iOS)
-  //   await notifee.requestPermission();
 
-  // Create a channel (required for Android)
   const channelId = await notifee.createChannel({
     id: 'default',
     name: 'Default Channel',

@@ -4,7 +4,18 @@ import Header from '../common/Header';
 import BuyTile from '../common/BuyTile';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import Animated, {
+  FadeIn,
+  FadeInDown,
+  FadeInUp,
+  BounceInUp,
+  BounceInDown,
+  FadeInRight,
+} from 'react-native-reanimated';
+import {useIsFocused} from '@react-navigation/native';
+
 const Buy = () => {
+  const focused = useIsFocused();
   const [sellAds, setSellAds] = useState([]);
   useEffect(() => {
     console.log('Use effect');
@@ -37,40 +48,27 @@ const Buy = () => {
         });
     });
     console.log('temp', temp);
-    // temp.sort((a, b) => {
-    //   const nameA = a.data.name.toUpperCase();
-    //   const nameB = b.data.name.toUpperCase();
-    //   if (nameA < nameB) {
-    //     return -1;
-    //   }
-    //   if (nameA > nameB) {
-    //     return 1;
-    //   }
-    //   return 0;
-    // });
-    // setSortBy('Name');
-    // setItems(temp);
-    // setItemsCopy(temp);
-    // setAllItems(temp);
-    //   });
     setSellAds(temp);
   };
   return (
     <View style={{marginBottom: 60}}>
       <Header />
       {/* <Text>Buy</Text> */}
-      <FlatList
-        data={sellAds}
-        renderItem={({item, index}) => {
-          console.log(item);
-          return (
-            <View>
-              <BuyTile propsData={item} />
-              {/* <Text className="text-black">{index + 1}</Text> */}
-            </View>
-          );
-        }}
-      />
+      {focused ? (
+        <FlatList
+          data={sellAds}
+          renderItem={({item, index}) => {
+            // console.log(item);s
+            return (
+              <Animated.View
+                entering={FadeInRight.delay(index * 50).duration(200)}>
+                <BuyTile propsData={item} />
+                {/* <Text className="text-black">{index + 1}</Text> */}
+              </Animated.View>
+            );
+          }}
+        />
+      ) : null}
       {/* <BuyTile /> */}
     </View>
   );

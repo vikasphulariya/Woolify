@@ -119,6 +119,7 @@ const Sell = () => {
         body: `${auth().currentUser.displayName} add a sell Request`,
         title: 'New sell Added',
         by: auth().currentUser.email,
+        for: 'all',
       },
       // to: 'foBoldX0TR-soxJYTU-J5O:APA91bES9B_Yo-bVWZyBudiAmnudjE-JJNHl35asK_kz_bW1PXHOE6xaneQ1cVIuhEK6Ydn0wLeym2pozL-mXTssdCdURDPIONsFU4wJW21OmN5fR290zWQ0Yra5KevVFgm1RyZ96d9n',
       to: '/topics/Sell',

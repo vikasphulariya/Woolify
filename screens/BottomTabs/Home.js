@@ -4,7 +4,17 @@ import Header from '../common/Header';
 import BuyTile from '../common/BuyTile';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import {useIsFocused} from '@react-navigation/native';
+import Animated, {
+  FadeIn,
+  FadeInDown,
+  FadeInUp,
+  BounceInUp,
+  BounceInDown,
+  FadeInRight,
+} from 'react-native-reanimated';
 const Home = () => {
+  const focused = useIsFocused();
   const [sellAds, setSellAds] = useState([]);
   useEffect(() => {
     console.log('Use effect');
@@ -55,18 +65,21 @@ const Home = () => {
   return (
     <View>
       <Header />
-      <FlatList
-        data={sellAds}
-        renderItem={({item, index}) => {
-          console.log(item);
-          return (
-            <View>
-              <BuyTile propsData={item} />
-              {/* <Text className="text-black">{index + 1}</Text> */}
-            </View>
-          );
-        }}
-      />
+      {focused ? (
+        <FlatList
+          data={sellAds}
+          renderItem={({item, index}) => {
+            // console.log(item);s
+            return (
+              <Animated.View
+                entering={FadeInRight.delay(index * 50).duration(200)}>
+                <BuyTile propsData={item} />
+                {/* <Text className="text-black">{index + 1}</Text> */}
+              </Animated.View>
+            );
+          }}
+        />
+      ) : null}
     </View>
   );
 };

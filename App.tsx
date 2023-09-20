@@ -20,12 +20,17 @@ import notifee from '@notifee/react-native';
 import auth from '@react-native-firebase/auth';
 import ManageYourOders from './screens/ManageYourOders';
 import EditPost from './screens/EditPost';
+import Warehouse from './screens/common/Warehouse';
 function App() {
   useEffect(() => {
     requestNotificationPermission();
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       console.log('A new FCM message arrived!', JSON.stringify(remoteMessage));
-      if (remoteMessage.data.by !== auth().currentUser.email) {
+      if (
+        remoteMessage.data.by !== auth().currentUser.email &&
+        (remoteMessage.data.for === 'all' ||
+          remoteMessage.data.for === auth().currentUser.email)
+      ) {
         onDisplayNotification(remoteMessage);
       } else {
         console.log('you created the post');
@@ -119,6 +124,11 @@ function App() {
         <Stack.Screen
           name="Manage"
           component={ManageYourOders}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Warehouse"
+          component={Warehouse}
           options={{headerShown: false}}
         />
         <Stack.Screen

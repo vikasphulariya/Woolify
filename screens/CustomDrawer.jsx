@@ -42,6 +42,16 @@ const CustomDrawer = () => {
           My Sell Post's
         </Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          console.log('cdd');
+          navigation.navigate('Warehouse');
+        }}
+        className="bg-amber-400  self-center mb-3 w-full rounded-2xl">
+        <Text className="text-white text-2xl text-center p-2 font-extrabold">
+          Ware House
+        </Text>
+      </TouchableOpacity>
 
       <TouchableOpacity
         style={{position: 'absolute', bottom: 0}}
