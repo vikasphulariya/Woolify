@@ -1,50 +1,31 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+<h1 align="center">
+<a href="https://github.com/vikasphulariya/Woolify/releases/tag/Main">WOOLIFY (TEKATHON 2.0)</a>
+</h1>
+<h1 align = "center">
+<img src="https://github.com/vikasphulariya/Woolify/assets/104715428/f64ba39f-f164-4ef6-a08b-2d9e44d81f98" width=150/>
+</h1>
+A comprehensive platform offers real-time data on wool prices, trends, and quality, while facilitating production and transportation tracking. It also empowers wool producers with training, marketing support, and access to storage and processing services, enabling direct sales to buyers.
+<h1 align="center">
+<a href="https://github.com/vikasphulariya/Woolify/releases/tag/Main">Download Woolify</a>
+</h1>
+## TECHNOLOGIES USED
 
-# Getting Started
+- RAZORPAY
+- REACT NATIVE
+- FIREBASE
+- REDUX
+- ASYNC
+- FIRESTORE
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## OUTCOME
 
-## Step 1: Start the Metro Server
+- Wool as a commodity. 
+- Unification of price /no exploitation.
+- GDP growth.
+- Storage facilities with management .
+- Step by step process from production to selling and training.
+- Creation of Supply and demand chain / Less wastage 
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
-
-```bash
-# using npm
-
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Open a _new_ terminal from the _root_ of your React Native project. 
-Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-The app should be ready to run on your  _Android Emulator_ or _iOS Simulator_ .  -->
 ## Screenshots
 Here are some of the screens from our app:
 <div align="center">
