@@ -67,7 +67,7 @@ The app should be ready to run on your  _Android Emulator_ or _iOS Simulator_ . 
 ## Screenshots
 Here are some of the screens from our app:
 <div align="center">
-<table>
+<table frame="box">
   <tr>
     <td>
     <p>State wise Price List</p>
@@ -77,11 +77,6 @@ Here are some of the screens from our app:
     <p>List of seller's Posting</p>
     <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/69c0845d-411c-44b6-8394-d7a1f9c483db" width="250" />
     </td>
-  </tr>
-</table>
-
-<table>
-  <tr>
     <td>
     <p>Details of a wool listed by seller</p>
     <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/a88ee840-e29a-46f4-a7e7-2724b454ca9b" width="250" />
