@@ -1,9 +1,9 @@
-
+<h1 align="center">
 # WOOLIFY (TEKATHON 2.0)
-
-![logo_2_2](https://github.com/vikasphulariya/animations/assets/104715428/0467d3bc-22c1-4d5d-9cc7-f26680a5da70)
-
-
+</h1>
+<h1 align = "center">
+<img src="https://github.com/vikasphulariya/Woolify/assets/104715428/f64ba39f-f164-4ef6-a08b-2d9e44d81f98" width=150/>
+</h1>
 A comprehensive platform offers real-time data on wool prices, trends, and quality, while facilitating production and transportation tracking. It also empowers wool producers with training, marketing support, and access to storage and processing services, enabling direct sales to buyers.
 
 ## TECHNOLOGIES USED
@@ -24,7 +24,7 @@ A comprehensive platform offers real-time data on wool prices, trends, and quali
 - Step by step process from production to selling and training.
 - Creation of Supply and demand chain / Less wastage 
 
-## Setup your App
+<!-- ## Setup your App
 ## Step 1: Start the Server
 
 To start the App, run the following command from the terminal of  _root directory_ of your React Native project:
@@ -63,10 +63,28 @@ npm run ios
 yarn ios
 ```
 
-The app should be ready to run on your  _Android Emulator_ or _iOS Simulator_ . 
-
-
+The app should be ready to run on your  _Android Emulator_ or _iOS Simulator_ .  -->
 ## Screenshots
+Here are some of the screens from our app:
 
-Here are some of the screens from our app
-<img src="https://github.com/vikasphulariya/Woolify/assets/104715428/c19d0060-3b1a-4b1e-8d0e-501b5e447107" width=100 />
+<div style="display: flex; flex-direction: row;">
+  <div style="flex: 1; text-align: center;">
+    <p>State wise Price List</p>
+    <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/c19d0060-3b1a-4b1e-8d0e-501b5e447107" width="250" />
+  </div>
+  <div style="flex: 1; text-align: center;">
+    <p>List of seller's Posting</p>
+    <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/69c0845d-411c-44b6-8394-d7a1f9c483db" width="250" />
+  </div>
+</div>
+
+<div style="display: flex; flex-direction: row;">
+  <div style="flex: 1; text-align: center;">
+    <p>Details of a wool listed by seller</p>
+    <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/a88ee840-e29a-46f4-a7e7-2724b454ca9b" width="250" />
+  </div>
+  <div style="flex: 1; text-align: center;">
+    <p>Order History</p>
+    <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/a5073dec-dfbf-42f9-b099-4d8ffbb5958f" width="250" />
+  </div>
+</div>
