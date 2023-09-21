@@ -33,12 +33,6 @@ const Sell = () => {
         setUserData(data._data);
         setNumber(data._data.Phone);
       });
-
-    // messaging()
-    //   .getToken()
-    //   .then(e => {
-    //     console.log(e);
-    //   });
   }, []);
 
   const ValidateInfo = () => {
@@ -203,7 +197,7 @@ const Sell = () => {
           <Animated.View entering={FadeInRight.delay(100).duration(200)}>
             <TextInput
               className="rounded-xl bg-black/10 mb-3 mx-4 px-3 text-xl text-black"
-              placeholder="Quntity"
+              placeholder="Quantity"
               placeholderTextColor={'gray'}
               inputMode="numeric"
               value={Quntity}

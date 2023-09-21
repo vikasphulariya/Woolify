@@ -21,6 +21,7 @@ import auth from '@react-native-firebase/auth';
 import ManageYourOders from './screens/ManageYourOders';
 import EditPost from './screens/EditPost';
 import Warehouse from './screens/common/Warehouse';
+import Profile from './screens/common/Profile';
 function App() {
   useEffect(() => {
     requestNotificationPermission();
@@ -134,6 +135,11 @@ function App() {
         <Stack.Screen
           name="Edit"
           component={EditPost}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

@@ -19,19 +19,22 @@ const CustomDrawer = () => {
       </Text>
 
       <TouchableOpacity
-        className="bg-amber-400  self-center mx-3 w-full rounded-2xl"
-        onPress={() => {}}>
-        <Text className="text-white text-2xl text-center p-2 font-extrabold">
+        className="bg-amber-400  self-center mx-3 mb-3 w-full rounded-2xl"
+        onPress={() => {
+          console.log('sfvs');
+          navigation.navigate('Profile');
+        }}>
+        <Text className="text-white text-2xl text-center  p-2 font-extrabold">
           Profile
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         className="bg-amber-400  self-center my-3 w-full rounded-2xl"
         onPress={() => {}}>
         <Text className="text-white text-2xl text-center p-2 font-extrabold">
           Settings
         </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity
         onPress={() => {
           console.log('cdd');
