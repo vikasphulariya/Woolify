@@ -66,25 +66,30 @@ yarn ios
 The app should be ready to run on your  _Android Emulator_ or _iOS Simulator_ .  -->
 ## Screenshots
 Here are some of the screens from our app:
-
-<div style="display: flex; flex-direction: row;">
-  <div style="flex: 1; text-align: center;">
+<div align="center">
+<table>
+  <tr>
+    <td>
     <p>State wise Price List</p>
     <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/c19d0060-3b1a-4b1e-8d0e-501b5e447107" width="250" />
-  </div>
-  <div style="flex: 1; text-align: center;">
+    </td>
+    <td>
     <p>List of seller's Posting</p>
     <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/69c0845d-411c-44b6-8394-d7a1f9c483db" width="250" />
-  </div>
-</div>
+    </td>
+  </tr>
+</table>
 
-<div style="display: flex; flex-direction: row;">
-  <div style="flex: 1; text-align: center;">
+<table>
+  <tr>
+    <td>
     <p>Details of a wool listed by seller</p>
     <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/a88ee840-e29a-46f4-a7e7-2724b454ca9b" width="250" />
-  </div>
-  <div style="flex: 1; text-align: center;">
+    </td>
+    <td>
     <p>Order History</p>
     <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/a5073dec-dfbf-42f9-b099-4d8ffbb5958f" width="250" />
-  </div>
+    </td>
+  </tr>
+</table>
 </div>
