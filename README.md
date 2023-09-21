@@ -1,17 +1,37 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# WOOLIFY (TEKATHON 2.0)
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+![logo_2_2](https://github.com/vikasphulariya/animations/assets/104715428/0467d3bc-22c1-4d5d-9cc7-f26680a5da70)
 
-## Step 1: Start the Metro Server
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+A comprehensive platform offers real-time data on wool prices, trends, and quality, while facilitating production and transportation tracking. It also empowers wool producers with training, marketing support, and access to storage and processing services, enabling direct sales to buyers.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## TECHNOLOGIES USED
+
+- RAZORPAY
+- REACT NATIVE
+- FIREBASE
+- REDUX
+- ASYNC
+- FIRESTORE
+
+## OUTCOME
+
+- Wool as a commodity. 
+- Unification of price /no exploitation.
+- GDP growth.
+- Storage facilities with management .
+- Step by step process from production to selling and training.
+- Creation of Supply and demand chain / Less wastage 
+
+## Setup your App
+## Step 1: Start the Server
+
+To start the App, run the following command from the terminal of  _root directory_ of your React Native project:
 
 ```bash
 # using npm
+
 npm start
 
 # OR using Yarn
@@ -20,7 +40,8 @@ yarn start
 
 ## Step 2: Start your Application
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+Open a _new_ terminal from the _root_ of your React Native project. 
+Run the following command to start your _Android_ or _iOS_ app:
 
 ### For Android
 
@@ -42,38 +63,17 @@ npm run ios
 yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+The app should be ready to run on your  _Android Emulator_ or _iOS Simulator_ . 
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-## Step 3: Modifying your App
+## Screenshots
 
-Now that you have successfully run the app, let's modify it.
+Here are some of the screens from our app
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+State wise Price List ![S1](https://github.com/vikasphulariya/Woolify/assets/104715428/c19d0060-3b1a-4b1e-8d0e-501b5e447107)
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+List of seller's Posting ![S2](https://github.com/vikasphulariya/Woolify/assets/104715428/69c0845d-411c-44b6-8394-d7a1f9c483db)
 
-## Congratulations! :tada:
+Details of a wool listed by seller![S3](https://github.com/vikasphulariya/Woolify/assets/104715428/a88ee840-e29a-46f4-a7e7-2724b454ca9b)
 
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Order History ![S4](https://github.com/vikasphulariya/Woolify/assets/104715428/a5073dec-dfbf-42f9-b099-4d8ffbb5958f)
