@@ -81,9 +81,19 @@ Here are some of the screens from our app:
     <p>Details of a wool listed by seller</p>
     <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/a88ee840-e29a-46f4-a7e7-2724b454ca9b" width="250" />
     </td>
+  </tr>
+  <tr>
     <td>
     <p>Order History</p>
-    <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/a5073dec-dfbf-42f9-b099-4d8ffbb5958f" width="250" />
+    <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/59b7718f-af43-45e3-b19a-49d642442cdb" width="250" />
+    </td>
+    <td>
+    <p>Warehouse Capacity Details</p>
+    <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/b94c7909-b56c-4205-985c-0aeddc41f4f8" width="250" />
+    </td>
+    <td>
+    <p>Learning section for farmers</p>
+    <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/09394a5a-8141-474d-9a46-e9a2f3487746" width="250" />
     </td>
   </tr>
 </table>
