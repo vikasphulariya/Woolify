@@ -1,26 +1,24 @@
 import {View, Text, FlatList} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import Header from '../common/Header';
-import BuyTile from '../common/BuyTile';
-import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import Animated, {
-  FadeIn,
-  FadeInDown,
-  FadeInUp,
-  BounceInUp,
-  BounceInDown,
-  FadeInRight,
-} from 'react-native-reanimated';
+import PriceTile from '../common/PriceTile';
 import {useIsFocused} from '@react-navigation/native';
-
-const Buy = () => {
+import Animated, {
+    FadeIn,
+    FadeInDown,
+    FadeInUp,
+    BounceInUp,
+    BounceInDown,
+    FadeInRight,
+  } from 'react-native-reanimated';
+const Price = () => {
   const focused = useIsFocused();
-  const [sellAds, setSellAds] = useState([]);
+  const [wareData, setWareData] = useState([]);
   useEffect(() => {
     console.log('Use effect');
     const unsubscribe = firestore()
-      .collection('Posts')
+      .collection('WareHouse')
       .onSnapshot(onResult, onError);
     return () => unsubscribe();
     // getItem();
@@ -38,40 +36,36 @@ const Buy = () => {
   const getItem = async querySnapshot => {
     let temp = [];
     querySnapshot.forEach(documentSnapshot => {
-      if (
-        documentSnapshot.data().email !== auth().currentUser.email &&
-        documentSnapshot.data().Status === 'Active'
-      )
-        temp.push({
-          id: documentSnapshot.id,
-          data: documentSnapshot.data(),
-        });
+      temp.push({
+        id: documentSnapshot.id,
+        data: documentSnapshot.data(),
+      });
     });
-    console.log('temp', temp);
-    setSellAds(temp);
+    // console.log('temp', temp);
+    setWareData(temp);
   };
   return (
-    <View style={{marginBottom: 60}}>
+    <View>
       <Header />
-      {/* <Text>Buy</Text> */}
+      <Text className="text-black self-center text-2xl font-bold">
+        State Wise Wool Price's
+      </Text>
       {focused ? (
         <FlatList
-          data={sellAds}
+          data={wareData}
           renderItem={({item, index}) => {
-            // console.log(item);s
             return (
-              <Animated.View
+                <Animated.View
                 entering={FadeInRight.delay(index * 50).duration(200)}>
-                <BuyTile propsData={item} />
-                {/* <Text className="text-black">{index + 1}</Text> */}
+                <PriceTile data={item} />
               </Animated.View>
             );
           }}
         />
       ) : null}
-      {/* <BuyTile /> */}
+      {/* <PriceTile /> */}
     </View>
   );
 };
 
-export default Buy;
+export default Price;

@@ -1,4 +1,4 @@
-package com.animations;
+package com.woolify;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

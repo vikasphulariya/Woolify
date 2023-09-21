@@ -21,6 +21,7 @@ import Buy from './BottomTabs/Buy';
 import Sell from './BottomTabs/Sell';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Price from './BottomTabs/Price';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 function BottomNavigator() {
@@ -60,7 +61,19 @@ function BottomNavigator() {
     // <NavigationContainer>
     <Tab.Navigator
       screenOptions={{tabBarLabelStyle: {fontSize: 12}}}
-      initialRouteName="Buy">
+      initialRouteName="Price">
+      <Tab.Screen
+        name="Price"
+        component={Price}
+        options={{
+          headerShown: false,
+          tabBarHideOnKeyboard: true,
+          tabBarShowLabel: true,
+          tabBarIcon: ({focused, color, size}) => (
+            <Feather name="trending-up" color={color} size={size} />
+          ),
+        }}
+      />
       <Tab.Screen
         name="Buy"
         component={Buy}
@@ -73,6 +86,7 @@ function BottomNavigator() {
           ),
         }}
       />
+
       <Tab.Screen
         name="Sell"
         component={Sell}
