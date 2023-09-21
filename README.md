@@ -1,5 +1,5 @@
 <h1 align="center">
-# WOOLIFY (TEKATHON 2.0)
+<a href="https://github.com/vikasphulariya/Woolify/releases/tag/Main">WOOLIFY (TEKATHON 2.0)</a>
 </h1>
 <h1 align = "center">
 <img src="https://github.com/vikasphulariya/Woolify/assets/104715428/f64ba39f-f164-4ef6-a08b-2d9e44d81f98" width=150/>
